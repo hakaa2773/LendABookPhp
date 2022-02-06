@@ -1,9 +1,7 @@
 <?php
 
  
-session_start();
-
- 
+session_start(); 
 
 $sqldb = mysqli_connect('localhost', 'root', '', 'lendabook');
 
@@ -16,32 +14,22 @@ $sqldb = mysqli_connect('localhost', 'root', '', 'lendabook');
  	$email = $_POST['email']; 
  	$phone = $_POST['phone']; 
  	$address = $_POST['address']; 
- 	$age = $_POST['age']; 
- 	$package_id = $_POST['package_id'];
+ 	$dob = $_POST['dob']; 
  	$password = $_POST['password'];
-
- 	# code...
+ 	$role = "customer";
+ 	$package = $_POST['package'];
+ 		
  }
 
- $sql= "INSERT INTO `tbl_customer` ( `firstname`, `lastname`, `email`, `phone`, `address`, `age`, `package_id`, `password`) VALUES ( '$firstname', '$lastname', '$email', '$phone', '$address', '$age', '$package_id', '$password')";
-
- 
- 
+ $sql= "INSERT INTO `tbl_customer` (`firstname`, `lastname`, `email`, `phone`, `address`, `dob`, `password`,`role`,`package`) VALUES ( '$firstname', '$lastname', '$email', '$phone', '$address', '$dob', '$password','$role','$package')"; 
 if($sqldb->query($sql)===TRUE){
-echo "Sucsessfully Add";
-header('location: ../viewCustomer.php');
-
- 
+echo "Sucsessfully Add ";
+header('location: ../login.php'); 
 }
 else{
 
  
 echo "Error:".$sql."<br>".$sqldb->error;
 }
-
- 
-
- 
-
  
 ?>

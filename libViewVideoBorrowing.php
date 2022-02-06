@@ -23,6 +23,7 @@ h1, h2, h3, h4, h5, h6 {
 <body >
 
 
+<!-- Navbar (sit on top) -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
     <img src="img/logo.jpg" alt="Trulli" width="100" height="100">
@@ -42,7 +43,7 @@ h1, h2, h3, h4, h5, h6 {
             Tabels
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <li><a class="dropdown-item" href="libViewBook.php">Lib View Book</a></li>
+            <li><a class="dropdown-item" href="libViewBook.php">Lib View Book</a></li>
             <li><a class="dropdown-item" href="libViewBookReservation.php">Lib View Book Reservation</a></li>
             <li><a class="dropdown-item" href="libViewVideoReservation.php">Lib View Video Reservation</a></li>
             <li><a class="dropdown-item" href="libViewVideo.php">Lib View Video</a></li>
@@ -71,12 +72,22 @@ h1, h2, h3, h4, h5, h6 {
 <br><br>
 <div class="contact py-sm-5" style="opacity: 0.8;">
 <div class="container py-xl-4 py-lg-2">
-<h1 class="text-center" >View Video</h1>
-<?php
+<h1 class="text-center" >View Video Borrowing</h1>
+<!-- <?php
 session_start();
 $db = mysqli_connect('localhost', 'root', '', 'lendabook');
-$results = mysqli_query($db, "SELECT * FROM  tbl_video");
+$results = mysqli_query($db, "SELECT * FROM  tbl_book_reserve");
+?> -->
+
+<?php
+$db = mysqli_connect('localhost', 'root', '', 'lendabook');
+$results = mysqli_query($db, "SELECT tbl_video_borrowing.video_borrowing_id,tbl_video_borrowing.video_borrowing_date, tbl_video_borrowing.video_due_date, tbl_video_borrowing.video_borrowing_status, tbl_video.video_name, tbl_customer.email
+FROM tbl_video_borrowing 
+INNER JOIN tbl_video ON tbl_video_borrowing.video_id=tbl_video.id 
+INNER JOIN tbl_customer ON tbl_video_borrowing.customer_id = tbl_customer.customer_id;");
 ?>
+
+
 
 <div class="card-body">
 <div class="table-responsive">
@@ -84,26 +95,34 @@ $results = mysqli_query($db, "SELECT * FROM  tbl_video");
 <thead>
 <tr>
 <th>Id</th>
+<th>Customer Email</th>
 <th>Video Name</th>
-<th>Age Restrictions</th>
-<th>Number Of Copies</th>
-<th>Borrowing</th>
+<th>Borrowing Date</th>
+<th>Due Date</th>
+<th>Status</th>
+<th>Recieved</th>
 </tr>
 </thead>
 <tbody>
 <?php while ($row = mysqli_fetch_array($results)) { ?>
 <tr>
-<td><?php echo $row['id']; ?></td>
+<td><?php echo $row['video_borrowing_id']; ?></td>
+<td><?php echo $row['email']; ?></td>
 <td><?php echo $row['video_name']; ?></td>
-<td><?php echo $row['video_age_restrictions']; ?></td>
-<td><?php echo $row['number_of_copies']; ?></td>
+<td><?php echo $row['video_borrowing_date']; ?></td>
+<td><?php echo $row['video_due_date']; ?></td>
+<td><?php echo $row['video_borrowing_status']; ?></td>
 <td>
-<a href="newVideoBorrowing.php?id=<?php echo $row["id"]; ?>">Borrowing</a>
+  <a href="php/videoStatusUpdate.php?id=<?php echo $row["video_borrowing_id"]; ?>">Recieved</i></a>
 </td>
 </tr>
 <?php } ?>
 </tbody>
 </table>
+
+<form method="post" action="php/videoBorrowCsv.php">
+<input type="submit" name="exportCsv" value="Get CSV" class="btn btn-dark" />
+</form>
 </div>
 </div>
 

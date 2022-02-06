@@ -43,20 +43,6 @@ h1, h2, h3, h4, h5, h6 {
             Tabels
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="newCustomer.php">Add Customer</a></li>
-            <li><a class="dropdown-item" href="libViewBook.php">Lib View Book</a></li>
-            <li><a class="dropdown-item" href="libViewBookBorrowing.php">Lib View Book Borrowing</a></li>
-            <li><a class="dropdown-item" href="libViewVideo.php">Lib View Video</a></li>
-            <li><a class="dropdown-item" href="newBook.php">New Book</a></li>
-            <li><a class="dropdown-item" href="newCustomer.php">New Customer</a></li>
-            <li><a class="dropdown-item" href="newLibrarean.php">New Librarean</a></li>
-            <li><a class="dropdown-item" href="newVideo.php">New Video</a></li>
-            <li><a class="dropdown-item" href="registerLib.php">Register Lib</a>
-            <li><a class="dropdown-item" href="viewLibrarean.php">View Librarean</a>
-            <li><a class="dropdown-item" href="viewVideo.php">View Video</a>
-            <li><a class="dropdown-item" href="viewBook.php">View Book</a></li>
-            <li><a class="dropdown-item" href="customerViewBookReservation.php">customer ViewBook Reservation</a></li>
-            <li><a class="dropdown-item" href="customerViewVideoReservation.php">customer View VideoReservation</a></li>
           </ul>
         </li>
       </ul>
@@ -73,7 +59,7 @@ h1, h2, h3, h4, h5, h6 {
 <br><br>
 <div class="contact py-sm-5" style="opacity: 0.8;">
 <div class="container py-xl-4 py-lg-2">
-<h1 class="text-center" >View Customers</h1>
+<h1 class="text-center" >Members</h1>
 <?php
 session_start();
 $db = mysqli_connect('localhost', 'root', '', 'lendabook');
@@ -91,7 +77,8 @@ $results = mysqli_query($db, "SELECT * FROM   tbl_customer");
 <th>email</th>
 <th>phone</th>
 <th>address</th>
-<th>password</th>
+<th>Package</th>
+<th>Role</th>
 </tr>
 </thead>
 <tbody>
@@ -103,7 +90,9 @@ $results = mysqli_query($db, "SELECT * FROM   tbl_customer");
 <td><?php echo $row['email']; ?></td>
 <td><?php echo $row['phone']; ?></td>
 <td><?php echo $row['address']; ?></td>
-<td><?php echo $row['password']; ?></td>
+<td><?php echo $row['package']; ?></td>
+<td><?php echo $row['role']; ?></td>
+
 </tr>
 <?php } ?>
 </tbody>

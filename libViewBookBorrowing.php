@@ -33,30 +33,36 @@ h1, h2, h3, h4, h5, h6 {
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link active" aria-current="page" href="librareanHome.php">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#about">About</a>
         </li>
+
+
+
+
+
+
+
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Tabels
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="newCustomer.php">Add Customer</a></li>
-            <li><a class="dropdown-item" href="libViewBook.php">Lib View Book</a></li>
-            <li><a class="dropdown-item" href="libViewBookBorrowing.php">Lib View Book Borrowing</a></li>
+           <li><a class="dropdown-item" href="libViewBook.php">Lib View Book</a></li>
+            <li><a class="dropdown-item" href="libViewBookReservation.php">Lib View Book Reservation</a></li>
+            <li><a class="dropdown-item" href="libViewVideoReservation.php">Lib View Video Reservation</a></li>
             <li><a class="dropdown-item" href="libViewVideo.php">Lib View Video</a></li>
             <li><a class="dropdown-item" href="newBook.php">New Book</a></li>
-            <li><a class="dropdown-item" href="newCustomer.php">New Customer</a></li>
-            <li><a class="dropdown-item" href="newLibrarean.php">New Librarean</a></li>
             <li><a class="dropdown-item" href="newVideo.php">New Video</a></li>
-            <li><a class="dropdown-item" href="registerLib.php">Register Lib</a>
-            <li><a class="dropdown-item" href="viewLibrarean.php">View Librarean</a>
-            <li><a class="dropdown-item" href="viewVideo.php">View Video</a>
-            <li><a class="dropdown-item" href="viewBook.php">View Book</a></li>
-            <li><a class="dropdown-item" href="customerViewBookReservation.php">customer ViewBook Reservation</a></li>
-            <li><a class="dropdown-item" href="customerViewVideoReservation.php">customer View VideoReservation</a></li>
+            <li><a class="dropdown-item" href="libViewVideo.php">View Video</a>
+            <li><a class="dropdown-item" href="libViewBook.php">View Book</a></li>
+            <li><a class="dropdown-item" href="libViewBookBorrowing.php">View Book Borrowing</a></li>
+            <li><a class="dropdown-item" href="libViewVideoBorrowing.php">View video Borrowing</a></li>
+            <li><a class="dropdown-item" href="viewCustomer.php">View Customers</a></li>
+            <li><a class="dropdown-item" href="libViewBookComment.php">View Book Comment</a></li>
+            <li><a class="dropdown-item" href="libViewVideoComment.php">View Video Comment</a></li>
           </ul>
         </li>
       </ul>
@@ -73,47 +79,57 @@ h1, h2, h3, h4, h5, h6 {
 <br><br>
 <div class="contact py-sm-5" style="opacity: 0.8;">
 <div class="container py-xl-4 py-lg-2">
-<h1 class="text-center" >View Book Reservation</h1>
-<body id="page-top">
-<?php
-
-
-
- session_start();
-$customer_id = $_SESSION['customer_id'];
-
+<h1 class="text-center" >View Book Borrowing</h1>
+<!-- <?php
+session_start();
 $db = mysqli_connect('localhost', 'root', '', 'lendabook');
+$results = mysqli_query($db, "SELECT * FROM  tbl_book_reserve");
+?> -->
 
-$results = mysqli_query($db, "SELECT  tbl_book.id,  tbl_book.book_name
-FROM tbl_book_reserve
-INNER JOIN tbl_book ON tbl_book_reserve.book_id=tbl_book.id WHERE customer_id ='$customer_id';"); ?>
+<?php
+$db = mysqli_connect('localhost', 'root', '', 'lendabook');
+$results = mysqli_query($db, "SELECT tbl_book_borrowing.book_borrowing_id, tbl_book_borrowing.book_borrowing_date, tbl_book_borrowing.book_due_date, tbl_book_borrowing.book_borrowing_status, tbl_book.book_name, tbl_customer.email
+FROM tbl_book_borrowing 
+INNER JOIN tbl_book ON tbl_book_borrowing.book_id=tbl_book.id 
+INNER JOIN tbl_customer ON tbl_book_borrowing.customer_id = tbl_customer.customer_id;");
+?>
+
+
 
 <div class="card-body">
 <div class="table-responsive">
 <table class="table table-dark table-striped" width="100%" cellspacing="0">
 <thead>
 <tr>
-<th>Book Id</th>
+<th>Id</th>
+<th>Customer Email</th>
 <th>Book Name</th>
-<th>Delete</th>
-<th>Book Id</th>
-<th>Book Name</th>
-<th>Delete</th>
+<th> Borrowing Date</th>
+<th> Due Date</th>
+<th>Status</th>
+<th>Recieved</th>
 </tr>
 </thead>
 <tbody>
-<?php while ($row = mysqli_fetch_array($results)) { ?> 
+<?php while ($row = mysqli_fetch_array($results)) { ?>
 <tr>
-<td><?php echo $row['id']; ?></td>
+<td><?php echo $row['book_borrowing_id']; ?></td>
+<td><?php echo $row['email']; ?></td>
 <td><?php echo $row['book_name']; ?></td>
-<td><?php echo $row['id']; ?></td>
-<td><?php echo $row['book_name']; ?></td>
-<td><?php echo $row['id']; ?></td>
-<td><?php echo $row['book_name']; ?></td>
+<td><?php echo $row['book_borrowing_date']; ?></td>
+<td><?php echo $row['book_due_date']; ?></td>
+<td><?php echo $row['book_borrowing_status']; ?></td>
+<td>
+  <a href="php/bookStatusUpdate.php?id=<?php echo $row["book_borrowing_id"]; ?>">Recieved</i></a>
+</td>
 </tr>
 <?php } ?>
 </tbody>
 </table>
+
+<form method="post" action="php/bookBorrowCsv.php">
+<input type="submit" name="exportCsv" value="Get CSV" class="btn btn-dark" />
+</form>
 </div>
 </div>
 

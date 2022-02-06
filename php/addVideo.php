@@ -18,7 +18,7 @@ $sqldb = mysqli_connect('localhost', 'root', '', 'lendabook');
  
 if($sqldb->query($sql)===TRUE){
 echo "Sucsessfully Add";
-header('location: ../viewVideo.php');
+header('location: ../libViewVideo.php');
 }
 else{ 
 echo "Error:".$sql."<br>".$sqldb->error;

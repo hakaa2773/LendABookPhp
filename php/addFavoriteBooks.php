@@ -15,7 +15,7 @@ $sqldb = mysqli_connect('localhost', 'root', '', 'lendabook');
 
 if($sqldb->query($sql)===TRUE){
 echo "Sucsessfully Add";
-//header('location: ../viewMyavorites.php');
+header('location: ../customerViewFavBook.php');
 }
 else{ 
 echo "Error:".$sql."<br>".$sqldb->error;

@@ -33,7 +33,7 @@ h1, h2, h3, h4, h5, h6 {
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link active" aria-current="page" href="customerHome.php">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#about">About</a>
@@ -43,20 +43,12 @@ h1, h2, h3, h4, h5, h6 {
             Tabels
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="newCustomer.php">Add Customer</a></li>
-            <li><a class="dropdown-item" href="libViewBook.php">Lib View Book</a></li>
-            <li><a class="dropdown-item" href="libViewBookBorrowing.php">Lib View Book Borrowing</a></li>
-            <li><a class="dropdown-item" href="libViewVideo.php">Lib View Video</a></li>
-            <li><a class="dropdown-item" href="newBook.php">New Book</a></li>
-            <li><a class="dropdown-item" href="newCustomer.php">New Customer</a></li>
-            <li><a class="dropdown-item" href="newLibrarean.php">New Librarean</a></li>
-            <li><a class="dropdown-item" href="newVideo.php">New Video</a></li>
-            <li><a class="dropdown-item" href="registerLib.php">Register Lib</a>
-            <li><a class="dropdown-item" href="viewLibrarean.php">View Librarean</a>
-            <li><a class="dropdown-item" href="viewVideo.php">View Video</a>
+           <li><a class="dropdown-item" href="viewVideo.php">View Video</a>
             <li><a class="dropdown-item" href="viewBook.php">View Book</a></li>
             <li><a class="dropdown-item" href="customerViewBookReservation.php">customer ViewBook Reservation</a></li>
             <li><a class="dropdown-item" href="customerViewVideoReservation.php">customer View VideoReservation</a></li>
+            <li><a class="dropdown-item" href="customerViewFavBook.php">customer View Favorite Book </a></li>
+            <li><a class="dropdown-item" href="customerViewfavVideo.php">customer View Favorite Video</a></li>
           </ul>
         </li>
       </ul>
@@ -104,40 +96,18 @@ $results = mysqli_query($db, "SELECT * FROM  tbl_book");
 <td><?php echo $row['ISBM']; ?></td>
 <td><?php echo $row['number_of_copies']; ?></td>
 <td><?php echo $row['author']; ?></td>
-<td>
-<script type="text/javascript">
-function getBookReserve() {
-document.location.href = "php/addReserve.php?id=<?php echo $row["id"]; ?>";
-}
-</script>
-<a href="#" onClick="getBookReserve()">Reserve</a>
-</td>
-<td>
-<script type="text/javascript">
-function addfavoriteBooks() {
-document.location.href = "php/addFavoriteBooks.php?id=<?php echo $row["id"]; ?>";
-}
-</script>
-<a href="#" onClick="addfavoriteBooks()">Favorite</a>
-</td>
 
 <td>
-<script type="text/javascript">
-function addBookComments() {
-document.location.href = "AddBookComment.php?id=<?php echo $row["id"]; ?>";
-}
-</script>
-<a href="#" onClick="addBookComments()">Comments</a>
+<a href="php/addReserve.php?id=<?php echo $row["id"]; ?>">Reserve</a>
 </td>
-
-
 <td>
-<script type="text/javascript">
-function viewBookComments() {
-document.location.href = "viewBookComments.php?id=<?php echo $row["id"]; ?>";
-}
-</script>
-<a href="#" onClick="viewBookComments()">ViewComments</a>
+<a href="php/addFavoriteBooks.php?id=<?php echo $row["id"]; ?>">Favorite</a>
+</td>
+<td>
+  <a href="AddBookComment.php?id=<?php echo $row["id"]; ?>">Comment</a>
+</td>
+<td>
+  <a href="viewBookComments.php?id=<?php echo $row["id"]; ?>">ViewComments</a>
 </td> -->
 </tr>
 <?php } ?>

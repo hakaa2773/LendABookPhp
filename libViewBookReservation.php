@@ -23,6 +23,7 @@ h1, h2, h3, h4, h5, h6 {
 <body >
 
 
+<!-- Navbar (sit on top) -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
     <img src="img/logo.jpg" alt="Trulli" width="100" height="100">
@@ -42,7 +43,7 @@ h1, h2, h3, h4, h5, h6 {
             Tabels
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <li><a class="dropdown-item" href="libViewBook.php">Lib View Book</a></li>
+           <li><a class="dropdown-item" href="libViewBook.php">Lib View Book</a></li>
             <li><a class="dropdown-item" href="libViewBookReservation.php">Lib View Book Reservation</a></li>
             <li><a class="dropdown-item" href="libViewVideoReservation.php">Lib View Video Reservation</a></li>
             <li><a class="dropdown-item" href="libViewVideo.php">Lib View Video</a></li>
@@ -71,35 +72,38 @@ h1, h2, h3, h4, h5, h6 {
 <br><br>
 <div class="contact py-sm-5" style="opacity: 0.8;">
 <div class="container py-xl-4 py-lg-2">
-<h1 class="text-center" >View Video</h1>
-<?php
+<h1 class="text-center" >View Book Reservation</h1>
+<!-- <?php
 session_start();
 $db = mysqli_connect('localhost', 'root', '', 'lendabook');
-$results = mysqli_query($db, "SELECT * FROM  tbl_video");
+$results = mysqli_query($db, "SELECT * FROM  tbl_book_reserve");
+?> -->
+
+<?php
+$db = mysqli_connect('localhost', 'root', '', 'lendabook');
+$results = mysqli_query($db, "SELECT  tbl_book.book_name, tbl_customer.email FROM tbl_book_reserve 
+INNER JOIN tbl_book ON tbl_book_reserve.book_id=tbl_book.id 
+INNER JOIN tbl_customer ON tbl_book_reserve.customer_id = tbl_customer.customer_id;");
 ?>
+
+
 
 <div class="card-body">
 <div class="table-responsive">
 <table class="table table-dark table-striped" width="100%" cellspacing="0">
 <thead>
 <tr>
-<th>Id</th>
-<th>Video Name</th>
-<th>Age Restrictions</th>
-<th>Number Of Copies</th>
-<th>Borrowing</th>
+<!-- <th>Id</th> -->
+<th>Customer Email</th>
+<th>Book Name</th>
 </tr>
 </thead>
 <tbody>
 <?php while ($row = mysqli_fetch_array($results)) { ?>
 <tr>
-<td><?php echo $row['id']; ?></td>
-<td><?php echo $row['video_name']; ?></td>
-<td><?php echo $row['video_age_restrictions']; ?></td>
-<td><?php echo $row['number_of_copies']; ?></td>
-<td>
-<a href="newVideoBorrowing.php?id=<?php echo $row["id"]; ?>">Borrowing</a>
-</td>
+<!-- <td><?php echo $row['reserve _id']; ?></td> -->
+<td><?php echo $row['email']; ?></td>
+<td><?php echo $row['book_name']; ?></td>
 </tr>
 <?php } ?>
 </tbody>

@@ -36,7 +36,7 @@ $id = $_GET['id'];
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link active" aria-current="page" href="librareanHome.php">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#about">About</a>
@@ -46,20 +46,19 @@ $id = $_GET['id'];
             Tabels
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <li><a class="dropdown-item" href="newCustomer.php">Add Customer</a></li>
             <li><a class="dropdown-item" href="libViewBook.php">Lib View Book</a></li>
-            <li><a class="dropdown-item" href="libViewBookBorrowing.php">Lib View Book Borrowing</a></li>
+            <li><a class="dropdown-item" href="libViewBookReservation.php">Lib View Book Reservation</a></li>
+            <li><a class="dropdown-item" href="libViewVideoReservation.php">Lib View Video Reservation</a></li>
             <li><a class="dropdown-item" href="libViewVideo.php">Lib View Video</a></li>
             <li><a class="dropdown-item" href="newBook.php">New Book</a></li>
-            <li><a class="dropdown-item" href="newCustomer.php">New Customer</a></li>
-            <li><a class="dropdown-item" href="newLibrarean.php">New Librarean</a></li>
             <li><a class="dropdown-item" href="newVideo.php">New Video</a></li>
-            <li><a class="dropdown-item" href="registerLib.php">Register Lib</a>
-            <li><a class="dropdown-item" href="viewLibrarean.php">View Librarean</a>
-            <li><a class="dropdown-item" href="viewVideo.php">View Video</a>
-            <li><a class="dropdown-item" href="viewBook.php">View Book</a></li>
-            <li><a class="dropdown-item" href="customerViewBookReservation.php">customer ViewBook Reservation</a></li>
-            <li><a class="dropdown-item" href="customerViewVideoReservation.php">customer View VideoReservation</a></li>
+            <li><a class="dropdown-item" href="libViewVideo.php">View Video</a>
+            <li><a class="dropdown-item" href="libViewBook.php">View Book</a></li>
+            <li><a class="dropdown-item" href="libViewBookBorrowing.php">View Book Borrowing</a></li>
+            <li><a class="dropdown-item" href="libViewVideoBorrowing.php">View video Borrowing</a></li>
+            <li><a class="dropdown-item" href="viewCustomer.php">View Customers</a></li>
+            <li><a class="dropdown-item" href="libViewBookComment.php">View Book Comment</a></li>
+            <li><a class="dropdown-item" href="libViewVideoComment.php">View Video Comment</a></li>
           </ul>
         </li>
       </ul>

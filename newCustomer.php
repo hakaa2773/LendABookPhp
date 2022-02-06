@@ -66,7 +66,7 @@ h1, h2, h3, h4, h5, h6 {
   </div>
 </nav>
 
- <!-- partial -->
+      <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">
       <div class="container-fluid">
@@ -107,31 +107,39 @@ h1, h2, h3, h4, h5, h6 {
                     </div>
                     
                      <div class="mb-3 row">
-                      <label for="age" class="col-sm-2 col-form-label">Age</label>
+                      <label for="dob" class="col-sm-2 col-form-label">Date Of Birth</label>
                           <div class="col-sm-10">
-                            <input type="number"  name="age" value=""  class="form-control">
+                            <input type="datetime-local"  name="dob" value=""  class="form-control">
                           </div>
                     </div>
 
+
                     <div class="mb-3 row">
-                      <label for="package_id" class="col-sm-2 col-form-label">Package</label>
+                      <label for="  package" class="col-sm-2 col-form-label"> Package</label>
                           <div class="col-sm-10">
-                            <input type="package_id"  name="package_id" value=""  class="form-control">
+                            <input type="text"  name="  package" value=""  class="form-control">
                           </div>
                     </div>
+
+
+
+
                     
                      <div class="mb-3 row">
                       <label for="password" class="col-sm-2 col-form-label">Password</label>
                           <div class="col-sm-10">
                             <input type="password"  name="password" value="" class="form-control">
                           </div>
-                    </div>     
+                    </div>   
+
+
                     <button class="btn btn-primary" type="submit" name="save">Register</button>         
                     
           </form> 
         </div>    
         </div>
       </div>
+
 
 
 

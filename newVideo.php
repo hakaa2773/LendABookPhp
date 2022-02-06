@@ -31,7 +31,7 @@ h1, h2, h3, h4, h5, h6 {
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link active" aria-current="page" href="librareanHome.php">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#about">About</a>
@@ -55,6 +55,8 @@ h1, h2, h3, h4, h5, h6 {
             <li><a class="dropdown-item" href="viewBook.php">View Book</a></li>
             <li><a class="dropdown-item" href="customerViewBookReservation.php">customer ViewBook Reservation</a></li>
             <li><a class="dropdown-item" href="customerViewVideoReservation.php">customer View VideoReservation</a></li>
+            <li><a class="dropdown-item" href="libViewBookComment.php">View Book Comment</a></li>
+            <li><a class="dropdown-item" href="libViewVideoComment.php">View Video Comment</a></li>
           </ul>
         </li>
       </ul>

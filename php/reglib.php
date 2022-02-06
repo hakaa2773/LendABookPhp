@@ -16,13 +16,15 @@ $sqldb = mysqli_connect('localhost', 'root', '', 'lendabook');
  	$address = $_POST['address']; 
  	$dob = $_POST['dob']; 
  	$password = $_POST['password'];
+ 	$role = "librarian";
+ 	$package = "Non";
+ 	
  }
 
- $sql= "INSERT INTO `tbl_librarian` ( `firstname`, `lastname`, `email`, `phone`, `address`, `dob`, `password`) VALUES ( '$firstname', '$lastname', '$email', '$phone', '$address', '$dob', '$password')";
- 
+ $sql= "INSERT INTO `tbl_customer` (`firstname`, `lastname`, `email`, `phone`, `address`, `dob`, `password`,`role`,`package`) VALUES ( '$firstname', '$lastname', '$email', '$phone', '$address', '$dob', '$password','$role','$package')"; 
 if($sqldb->query($sql)===TRUE){
 echo "Sucsessfully Add ";
-header('location: ../viewLibrarean.php'); 
+header('location: ../viewCustomer.php'); 
 }
 else{
 

@@ -1,6 +1,4 @@
-<?php
-
- 
+<?php 
 session_start(); 
 $customer_id = $_SESSION['customer_id'];
 $book_id = $_GET['id'];

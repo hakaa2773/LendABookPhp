@@ -23,6 +23,7 @@ h1, h2, h3, h4, h5, h6 {
 <body >
 
 
+<!-- Navbar (sit on top) -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
     <img src="img/logo.jpg" alt="Trulli" width="100" height="100">
@@ -71,11 +72,14 @@ h1, h2, h3, h4, h5, h6 {
 <br><br>
 <div class="contact py-sm-5" style="opacity: 0.8;">
 <div class="container py-xl-4 py-lg-2">
-<h1 class="text-center" >View Video</h1>
+<h1 class="text-center" >View Video comment</h1>
 <?php
 session_start();
 $db = mysqli_connect('localhost', 'root', '', 'lendabook');
-$results = mysqli_query($db, "SELECT * FROM  tbl_video");
+$results = mysqli_query($db, "SELECT tbl_video_comment.video_comment_id, tbl_video_comment.video_comment, tbl_video.video_name, tbl_customer.email
+ FROM tbl_video_comment
+  INNER JOIN tbl_video ON tbl_video_comment.video_id=tbl_video.id 
+  INNER JOIN tbl_customer ON tbl_video_comment.customer_id = tbl_customer.customer_id;");
 ?>
 
 <div class="card-body">
@@ -84,21 +88,21 @@ $results = mysqli_query($db, "SELECT * FROM  tbl_video");
 <thead>
 <tr>
 <th>Id</th>
+<th>Member Email</th>
 <th>Video Name</th>
-<th>Age Restrictions</th>
-<th>Number Of Copies</th>
-<th>Borrowing</th>
+<th>Comments</th>
+<th>Delete</th>
 </tr>
 </thead>
 <tbody>
 <?php while ($row = mysqli_fetch_array($results)) { ?>
 <tr>
-<td><?php echo $row['id']; ?></td>
+<td><?php echo $row['video_comment_id']; ?></td>
+<td><?php echo $row['email']; ?></td>
 <td><?php echo $row['video_name']; ?></td>
-<td><?php echo $row['video_age_restrictions']; ?></td>
-<td><?php echo $row['number_of_copies']; ?></td>
+<td><?php echo $row['video_comment']; ?></td>
 <td>
-<a href="newVideoBorrowing.php?id=<?php echo $row["id"]; ?>">Borrowing</a>
+<a href="php/deleteVideoComment.php?id=<?php echo $row["video_comment_id"]; ?>">Delete</a>
 </td>
 </tr>
 <?php } ?>

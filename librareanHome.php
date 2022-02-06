@@ -27,13 +27,38 @@ h1, h2, h3, h4, h5, h6 {
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link active" aria-current="page" href="librareanHome.php">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#about">About</a>
         </li>
+
+
         <li class="nav-item">
-          <a class="nav-link" href="login.php">Login</a>
+          <a class="nav-link" href="php/logout.php">Logout</a>
+        </li>
+
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Tabels
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="libViewBook.php">Lib View Book</a></li>
+            <li><a class="dropdown-item" href="libViewBookReservation.php">Lib View Book Reservation</a></li>
+            <li><a class="dropdown-item" href="libViewVideoReservation.php">Lib View Video Reservation</a></li>
+            <li><a class="dropdown-item" href="libViewVideo.php">Lib View Video</a></li>
+            <li><a class="dropdown-item" href="newBook.php">New Book</a></li>
+            <li><a class="dropdown-item" href="newVideo.php">New Video</a></li>
+            <li><a class="dropdown-item" href="libViewVideo.php">View Video</a>
+            <li><a class="dropdown-item" href="libViewBook.php">View Book</a></li>
+            <li><a class="dropdown-item" href="libViewBookBorrowing.php">View Book Borrowing</a></li>
+            <li><a class="dropdown-item" href="libViewVideoBorrowing.php">View video Borrowing</a></li>
+            <li><a class="dropdown-item" href="viewCustomer.php">View Customers</a></li>
+            <li><a class="dropdown-item" href="libViewBookComment.php">View Book Comment</a></li>
+            <li><a class="dropdown-item" href="libViewVideoComment.php">View Video Comment</a></li>
+            
+          </ul>
         </li>
       </ul>
       <form class="d-flex">
@@ -80,7 +105,7 @@ h1, h2, h3, h4, h5, h6 {
 
   <div class="bgimg-1 w3-display-container w3-opacity-min" id="home">
     <div class="w3-display-middle" style="white-space:nowrap;">
-      <span class="w3-center w3-padding-large w3-black w3-xlarge w3-wide w3-animate-opacity">Lend <span class="w3-hide-small">A </span>Book</span>
+      <span class="w3-center w3-padding-large w3-black w3-xlarge w3-wide w3-animate-opacity">Librarean <span class="w3-hide-small"> </span>Home</span>
     </div>
   </div>
 

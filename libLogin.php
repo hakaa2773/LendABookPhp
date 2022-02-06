@@ -10,8 +10,8 @@
 <body>
 <!-- partial:index.partial.html -->
 <div id="login-form-wrap">
-  <h2>Customer Login</h2>
-  <form action="php/addLogin.php" method="post">
+  <h2>Librarean Login</h2>
+  <form action="php/addLibLogin.php" method="post">
   <form id="login-form">
     <p>
     <input type="text" id="email" name="email" placeholder="email" required><i class="validation"><span></span><span></span></i>
@@ -24,7 +24,6 @@
     </p>
   </form>
   <div id="create-account-wrap">
-    <p>Not a member? <a href="newCustomer.php">Create Account</a><p>
   </div><!--create-account-wrap-->
 </div><!--login-form-wrap-->
 <!-- partial -->

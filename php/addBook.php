@@ -19,7 +19,7 @@ $sqldb = mysqli_connect('localhost', 'root', '', 'lendabook');
 
 if($sqldb->query($sql)===TRUE){
 echo "Sucsessfully Add";
-header('location: ../viewBook.php');
+header('location: ../libViewBook.php');
 }
 else{ 
 echo "Error:".$sql."<br>".$sqldb->error;

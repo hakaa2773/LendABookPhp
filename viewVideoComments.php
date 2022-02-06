@@ -33,7 +33,7 @@ h1, h2, h3, h4, h5, h6 {
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link active" aria-current="page" href="customerHome.php">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#about">About</a>
@@ -43,20 +43,12 @@ h1, h2, h3, h4, h5, h6 {
             Tabels
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-           <li><a class="dropdown-item" href="newCustomer.php">Add Customer</a></li>
-            <li><a class="dropdown-item" href="libViewBook.php">Lib View Book</a></li>
-            <li><a class="dropdown-item" href="libViewBookBorrowing.php">Lib View Book Borrowing</a></li>
-            <li><a class="dropdown-item" href="libViewVideo.php">Lib View Video</a></li>
-            <li><a class="dropdown-item" href="newBook.php">New Book</a></li>
-            <li><a class="dropdown-item" href="newCustomer.php">New Customer</a></li>
-            <li><a class="dropdown-item" href="newLibrarean.php">New Librarean</a></li>
-            <li><a class="dropdown-item" href="newVideo.php">New Video</a></li>
-            <li><a class="dropdown-item" href="registerLib.php">Register Lib</a>
-            <li><a class="dropdown-item" href="viewLibrarean.php">View Librarean</a>
-            <li><a class="dropdown-item" href="viewVideo.php">View Video</a>
+          <li><a class="dropdown-item" href="viewVideo.php">View Video</a>
             <li><a class="dropdown-item" href="viewBook.php">View Book</a></li>
             <li><a class="dropdown-item" href="customerViewBookReservation.php">customer ViewBook Reservation</a></li>
             <li><a class="dropdown-item" href="customerViewVideoReservation.php">customer View VideoReservation</a></li>
+            <li><a class="dropdown-item" href="customerViewFavBook.php">customer View Favorite Book </a></li>
+            <li><a class="dropdown-item" href="customerViewfavVideo.php">customer View Favorite Video</a></li>
           </ul>
         </li>
       </ul>
@@ -77,7 +69,10 @@ h1, h2, h3, h4, h5, h6 {
 <?php
 session_start();
 $db = mysqli_connect('localhost', 'root', '', 'lendabook');
-$results = mysqli_query($db, "SELECT * FROM  tbl_video_comment");
+$results = mysqli_query($db, "SELECT tbl_video_comment.video_comment_id, tbl_video_comment.video_comment, tbl_video.video_name, tbl_customer.email
+ FROM tbl_video_comment
+  INNER JOIN tbl_video ON tbl_video_comment.video_id=tbl_video.id 
+  INNER JOIN tbl_customer ON tbl_video_comment.customer_id = tbl_customer.customer_id;");
 ?>
 
 <div class="card-body">
@@ -86,8 +81,8 @@ $results = mysqli_query($db, "SELECT * FROM  tbl_video_comment");
 <thead>
 <tr>
 <th>Id</th>
-<th>Member ID</th>
-<th>Video ID</th>
+<th>Member Email</th>
+<th>Video Name</th>
 <th>Comments</th>
 </tr>
 </thead>
@@ -95,8 +90,8 @@ $results = mysqli_query($db, "SELECT * FROM  tbl_video_comment");
 <?php while ($row = mysqli_fetch_array($results)) { ?>
 <tr>
 <td><?php echo $row['video_comment_id']; ?></td>
-<td><?php echo $row['customer_id']; ?></td>
-<td><?php echo $row['video_id']; ?></td>
+<td><?php echo $row['email']; ?></td>
+<td><?php echo $row['video_name']; ?></td>
 <td><?php echo $row['video_comment']; ?></td>
 </tr>
 <?php } ?>
